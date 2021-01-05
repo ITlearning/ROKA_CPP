@@ -1,3 +1,6 @@
+//기본 생성자
+//클래스에 어떤 생성자도 없을 때 컴파일러가 자동으로 생성해주는 생성자
+
 #include <iostream>
 using namespace std;
 
@@ -5,7 +8,7 @@ class Rectangle {
 	public:
 	int width, height;
 	Rectangle();
-	Rectangle(int w, int h);
+	Rectangle(int w, int h); //이렇게 다른 생성자가 선언 되었을 경우, 기본 생성자를 생성하지 않는다. 따라서 기본 생성자 또한 같이 선언 해 주어야 한다.
 	Rectangle(int length);
 	bool isSquare();
 };
