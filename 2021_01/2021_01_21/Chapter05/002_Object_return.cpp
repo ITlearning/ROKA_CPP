@@ -1,3 +1,5 @@
+//객체 리턴
+
 #include <iostream>
 using namespace std;
 
