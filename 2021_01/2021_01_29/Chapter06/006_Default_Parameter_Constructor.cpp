@@ -1,0 +1,24 @@
+// 중복된 생성자들을 디폴드 매개 변수를 이용한 간소화 연습
+#include <iostream>
+using namespace std;
+
+class MyVector {
+	int *p;
+	int size;
+public:
+	MyVector(int n = 100) {
+		p = new int [n];
+		size = n;
+		cout << size << endl;
+	}
+	~MyVector() { delete [] p; }
+};
+
+int main() {
+	MyVector *v1, *v2;
+	v1 = new MyVector();
+	v2 = new MyVector(1024);
+	
+	delete v1;
+	delete v2;
+}
