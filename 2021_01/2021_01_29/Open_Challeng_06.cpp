@@ -4,29 +4,41 @@
 #include <cstdlib>
 using namespace std;
 
-class UpDownGame {
-	// static 공유 랜덤 생성 번호
-	// 스타트
-	
-	static int RandomNum;
-}
-
-int UpDownGame::RandomNum = 
-
-class Person {
-	// 참여자 이름
-	// 참여자 명수
-	// 참여자가 외친 숫자
-	string Name;
-	string *p;
-	int num;
-	public:
-	Person(int a) { p = new Person[a]; }
-}
 
 int main() {
 	int a;
 	cout << "참여자수를 입력하세요 : ";
 	cin >> a;
-	
+	string person[a];
+	cout << endl;
+	for(int i = 0; i < a; i++) {
+		cout << i << "번째 참여자의 이름 : ";
+		cin >> person[i];
+	}
+	srand((unsigned)time(0));
+	int n = rand();
+	n = n % 100;
+	int per = 0;
+	int num;
+	int Max = 0;
+	int min = 0;
+	cout << "게임을 시작합니다." << endl;
+	cout << n << endl;
+	while(true) {
+		if(per >= 2) per = 0;
+		
+		cout << person[per] << ">> ";
+		cin >> num;
+		if(n == num) {
+			cout << person[per] << "가 이겼습니다!" << endl;
+			break;
+		}else if(num > n || num > Max) {
+			Max = num;
+		}else if(num < n || num < min) {
+			min = num;
+		}
+		
+		cout << "답은 " << min << "과 " << Max << "사이에 있습니다." << endl;
+		per++;
+	}
 }
