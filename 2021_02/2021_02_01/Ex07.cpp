@@ -16,7 +16,8 @@ public:
 		return rand() % (122+1-65) + 65;
 	}
 	static double nextDouble() {
-		return rand() % 32767;
+		return rand() / (float)RAND_MAX * 1.0f;
+		// 0부터 1까지 생성한 실수
 	}
 };
 
@@ -31,5 +32,10 @@ int main() {
 	cout << "알파벳을 랜덤하게 10개 출력합니다." << endl;
 	for(int i = 0; i < 10; i++)
 		cout << Random::nextAlphabet() << ' ';
+	cout << endl;
+	
+	cout << "랜덤한 실수를 10개 출력합니다." << endl;
+	for(int i = 0; i < 10; i++)
+		cout << Random::nextDouble() << ' ';
 	cout << endl;
 }
