@@ -12,7 +12,7 @@ class Product {
 public:
 	
 	Product();
-	virtual void show() = 0;
+	virtual void show() = 0; // 순수 가상함수
 	Product(int id, string ex, string pro, string money) { this->id = id; this->ex = ex; this->pro = pro; this->money = money; }
 	int getId() { return id; }
 	string getPro() { return pro; }
