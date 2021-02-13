@@ -37,47 +37,31 @@ public:
 		cout << "왼쪽(a), 아래(s), 위(d), 오른쪽(f) >> ";
 		cin >> m;
 		if(m == "a") {
-			if(x <= 0) {
-				x = 0;
-			} else if (x >= 19) {
-				x = 19;
-			} else {
-				x -= distance;
-			}
-		} else if( m == "s"){
 			if(y <= 0) {
 				y = 0;
-			} else if (y >= 21) {
-				y = 20;
-			} else {
-				y += distance;
-			}
-		} else if(m == "d") {
-			if(x <= 0) {
-				if(t == false) {
-					x += distance;
-					t = true;
-				}else {
-					x = 0;
-				}
-			} else if (x >= 19) {
-				x = 19;
-			} else {
-				
-			}
-			
-		} else if(m == "f") {
-			if(y <= 0) {
-				if(t == false) {
-					y += distance;
-					t = true;
-				}else {
-					y = 0;
-				}
-			} else if (y >= 19) {
-				y = 19;
 			} else {
 				y -= distance;
+			}
+		} else if( m == "s"){
+			
+			if (x >= 9) {
+				x = 9;
+			} else {
+				x += distance;
+			}
+		} else if(m == "d") {
+			if(x >= 0) {
+				x = 0;
+			}else {
+				x -= distance;
+			}
+			
+			
+		} else if(m == "f") {
+			if (y >= 19) {
+				y = 19;
+			} else {
+				y += distance;
 			}
 			
 		}
@@ -97,13 +81,29 @@ public:
 		
 		int num = rand() % 4;
 		if(num == 0) {
-			x -= distance;
+			if(y <= 0) {
+				y = 0;
+			} else {
+				y -= distance;
+			}
 		} else if(num == 1){
-			y -= distance;
+			if (x >= 9) {
+				x = 9;
+			} else {
+				x += distance;
+			}
 		} else if(num == 2) {
-			x += distance;
+			if(x >= 0) {
+				x = 0;
+			}else {
+				x -= distance;
+			}
 		} else if(num == 3) {
-			y += distance;
+			if (y >= 19) {
+				y = 19;
+			} else {
+				y += distance;
+			}
 		}
 	}
 
@@ -124,17 +124,34 @@ public:
 			}else {
 				int num = rand() % 4;
 				if(num == 0) {
-					x -= distance;
-				} else if(num == 1){
+				if(y <= 0) {
+					y = 0;
+				} else {
 					y -= distance;
-				} else if(num == 2) {
+				}
+			} else if(num == 1){
+				if (x >= 9) {
+					x = 9;
+				} else {
 					x += distance;
-				} else if(num == 3) {
+				}
+			} else if(num == 2) {
+				if(x >= 0) {
+					x = 0;
+				}else {
+					x -= distance;
+				}
+			} else if(num == 3) {
+				if (y >= 19) {
+					y = 19;
+				} else {
 					y += distance;
 				}
 			}
-				cnt++;
-		}else {
+		}
+		
+			cnt++;
+		} else {
 			cnt++;
 		}
 	}
@@ -146,6 +163,7 @@ public:
 
 int main() {
 	int cnt = 0;
+	GameObject *pf;
 	Human H(0,0,1);
 	Monster M(5,5,2);
 	Food F(9,9,1);
@@ -166,6 +184,14 @@ int main() {
 		Game[H.getX()][H.getY()] = H.getShape();
 		Game[M.getX()][M.getY()] = M.getShape();
 		Game[F.getX()][F.getY()] = F.getShape();
+		pf = &F;
+		if(H.collide(pf)) {
+			cout << "Human Win!" << '\n'; break;
+		} else if (M.collide(pf)) {
+			cout << "Human Lose..." << '\n'; break;
+		}
+			
+		
 		for(int i = 0; i < 10; i++) {
 		j = 0;
 		for(; j < 20; j++){
