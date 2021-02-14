@@ -19,7 +19,9 @@
  
  페스타 : https://festa.io/
  
- CPP Korea : cppkorea.org/
+ CPP Korea : https://cppkorea.org/
+ 
+ 한국판 뉴딜 : http://www.knewdeal.go.kr/
 * * *
 
 ##### Chapter 01

@@ -5,13 +5,13 @@ class AbstractGate {
 protected:
 	bool x,y;
 public:
+	AbstractGate() {}
 	void set(bool x, bool y) { this->x = x; this->y = y; }
 	virtual bool operation() = 0;
 };
 
 class ANDGate : public AbstractGate {
 public:
-	ANDGate() {}
 	bool operation() {
 		if(x == true && y == true) {
 			return true;
@@ -23,7 +23,6 @@ public:
 
 class ORGate : public AbstractGate {
 public:
-	ORGate() {}
 	bool operation() {
 		if(x == false && y == false)
 			return false;
@@ -33,7 +32,6 @@ public:
 
 class XORGate : public AbstractGate {
 public:
-	XORGate() {}
 	bool operation() {
 		if((x == false && y == false) || (x == true && y == true))
 			return false;
@@ -42,15 +40,15 @@ public:
 };
 
 int main() {
-	ANDGate and;
-	ORGate or;
-	XORGate xor;
+	ANDGate a; // and , or , xor 로 이름을 설정해놓고 컴파일을 돌리면 에러가 남. 왜 그런지는 모르겠음 아무튼 그럼.
+	ORGate o;
+	XORGate x;
 	
-	and.set(true, false);
-	or.set(true, false);
-	xor.set(true, false);
+	a.set(true, false);
+	o.set(true, false);
+	x.set(true, false);
 	cout.setf(ios::boolalpha); // 불린 값을 "true", "false"문자열로 출력할 것을 지시.
-	cout << and.operation() << endl;
-	cout << or.operation() << endl;
-	cout << xor.operation() << endl;
+	cout << a.operation() << endl;
+	cout << o.operation() << endl;
+	cout << x.operation() << endl;
 }
