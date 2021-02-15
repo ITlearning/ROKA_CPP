@@ -2,7 +2,7 @@
 
 다 까먹은 C++을 살리기 위한 프로젝트
 
-![180847610](https://user-images.githubusercontent.com/11778058/107959610-fba52f00-6fe6-11eb-965f-0e926cd2be1e.jpg){: width="50%" height="50%"}
+![180847610](https://user-images.githubusercontent.com/11778058/107959610-fba52f00-6fe6-11eb-965f-0e926cd2be1e.jpg){: width="100" height="100"}
 
 
 - 각 폴더에는 그 날 코딩해본 CPP파일들이 존재합니다.
