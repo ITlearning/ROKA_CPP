@@ -19,7 +19,7 @@
  ## 사용하는 책
  <p align="center"><img width="50%" src="https://user-images.githubusercontent.com/11778058/107959610-fba52f00-6fe6-11eb-965f-0e926cd2be1e.jpg" /></p>
 
- 
+ ##### 명품 C++ Programming - 황기태 
  
  
  * * *
