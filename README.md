@@ -22,6 +22,8 @@
  CPP Korea : https://cppkorea.org/
  
  한국판 뉴딜 : http://www.knewdeal.go.kr/
+ 
+ AWS Educate : https://aws.amazon.com/ko/education/awseducate/
 * * *
 
 ##### Chapter 01
@@ -101,12 +103,17 @@
 
 2021.02.11 책 Page 422 ~ 424. 실습문제 08 - 09 풀이완료. (09문제는 뒤에 힌트가 있는줄 모르고 일단 미완성상태로 풀이. 추후에 다시 함.)
 
+
 ###### Chapter 09
 2021.02.12 책 Page 425 ~ 457. 예제 9-1 ~ 9-7 실습완료. Open Challenge 09 풀이 완료.
 
 2021.02.13 책 Page 458 ~ 467. 실습문제 01 ~ 04 풀이완료. 05번 문제 풀이 중.
 
 2021.02.14 책 Page 468 ~ 470. 실습문제 05 ~ 09 풀이완료. 10번 문제 풀이완료 (추후에 다시 해봄).
+
+
+###### Chapter 10
+2021.02.15 
 
 # 특이사항
 
