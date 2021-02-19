@@ -77,7 +77,7 @@ int main() {
 		} else {
 			if(0 < num && num < 5) {
 				cout << "No . !!" << endl;
-			}else {
+			}else if (num == -1) {
 				break;
 			}
 		}
