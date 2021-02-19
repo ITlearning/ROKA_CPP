@@ -8,6 +8,7 @@ using namespace std;
 class Nation {
 	string nation;
 	string capital;
+	
 public:
 	Nation(string nation = "", string capital = "") {
 		this->nation = nation;
@@ -24,6 +25,7 @@ public:
 int main() {
 	vector<Nation> v;
 	int n;
+	bool a = true;
 	string nation;
 	string capital;
 	string answer;
@@ -47,31 +49,38 @@ int main() {
 				cout << "현재 " << v.size() << "개의 나라가 입력되어 있습니다." << endl;
 				cout << "나라와 수도를 입력하세요. (no no 이면 입력끝)" << endl;
 				while(true) {
+					a = true;
 					cout << v.size() + 1 << ">> ";
 					cin >> nation >> capital;
 					for(int i = 0; i < v.size(); i++) {
-						if(v[i].getNation() == nation && v[i].getCapital() == capital)
+						if(v[i].getNation() == nation) {
+							a = false;
 							cout << "already exists !!" << endl;
-						else 
-							v.push_back(Nation(nation, capital));
-	
+						}
 					} 
+					
+					if(a == true) {
+						v.push_back(Nation(nation,capital));
+					}
 					
 					if(nation == "no" && capital == "no")
 						break;
 				}
 				break;
 			case 2 :
+				int point = 0;
 				while(true){
 					srand((unsigned)time(0));
 					int n = rand() % v.size();
+					cout << "점수 : " << point << endl;
 					cout << v[n].getNation() << "의 수도는? > ";
 					cin >> answer;
 					if(answer == "exit")
 						break;
-					if(v[n].getCapital() == answer)
-						cout << "Correct!!!" << endl;
-					else 
+					if(v[n].getCapital() == answer) {
+						cout << "Correct!!!" << endl; 
+						point++;
+					}else 
 						cout << "No !!" << endl;
 				}
 				break;
