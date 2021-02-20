@@ -19,6 +19,7 @@ int main() {
 	vector<Word> v;
 	string eng;
 	string kor;
+	int cnt = 0;
 	v.push_back(Word("아기", "Baby"));
 	v.push_back(Word("인간", "Human"));
 	v.push_back(Word("감정", "Emotion"));
@@ -38,71 +39,102 @@ int main() {
 			case 1 :
 				cout << "영어단어에 exit를 입력하면 입력 끝" << endl;
 				while(true) {
-					cout << endl;
-					cout << "영어 >> ";
-					getline(cin, eng);
+					if(cnt == 0) {
+					cout << "영어 >>";
+					cin >> eng;
 					if(eng == "exit")
 						break;
+					cnt = 1;
+					} else if (cnt == 1) {
 					cout << "한글 >> ";
-					getline(cin, kor);
+					cin >> kor;
+					cnt = 0;
+					}
 					v.push_back(Word(kor, eng));
 				}
+				
+				
 				break;
-			case 2:
+			case 2 :
 				while(true) {
 					srand((unsigned)time(0));
 					int n = rand() % v.size();
 					int tmp = rand() % v.size();
-					int b = rand() % 4 + 1;
+					int answer = rand() % 4 + 1;
 					int num;
-					
-					cout << v[n].getEng() << "?" << endl;
-		
-				if(b == 1) {
-					cout << "(1)" << v[n].getKor() << ' ';
-					n = rand() % v.size();
-					cout << "(2)" << v[n].getKor() << ' ';
-					n = rand() % v.size();
-					cout << "(3)" << v[n].getKor() << ' ';
-					n = rand() % v.size();
-					cout << "(4)" << v[n].getKor() << ' ';
-				} else if (b == 2) {
-					tmp = rand() % v.size();
-					cout << "(1)" << v[tmp].getKor() << ' ';
-					cout << "(2)" << v[n].getKor() << ' ';
-					tmp = rand() % v.size();
-					cout << "(3)" << v[tmp].getKor() << ' ';
-					tmp = rand() % v.size();
-					cout << "(4)" << v[tmp].getKor() << ' ';
-				} else if (b == 3) {
-					cout << "(1)" << v[tmp].getKor() << ' ';
-					tmp = rand() % v.size();
-					cout << "(2)" << v[tmp].getKor() << ' ';
-					tmp = rand() % v.size();
-					cout << "(3)" << v[n].getKor() << ' ';
-					tmp = rand() % v.size();
-					cout << "(4)" << v[tmp].getKor() << ' ';
-				} else if (b == 4) {
-					cout << "(1)" << v[tmp].getKor() << ' ';
-					tmp = rand() % v.size();
-					cout << "(2)" << v[tmp].getKor() << ' ';
-					tmp = rand() % v.size();
-					cout << "(3)" << v[tmp].getKor() << ' ';
-					tmp = rand() % v.size();
-					cout << "(4)" << v[n].getKor() << ' ';
-				}
-				cout << " >> ";
-				cin >> num;
-				if(num == b) {
-					cout << "Excellent!" << endl;
-				} else {
-					if(0 < num && num < 5) {
-						cout << "No . !!" << endl;
-					}else if (num == -1) {
+					bool t = true;
+					cout << v[n].getEng() << "? " << endl;
+					for(int i = 0; i < 4; i++) {
+						cout << "(" <<  i + 1 << ")" ;
+						if(answer == 1) {
+							if(i == 0) {
+								cout << v[n].getKor();
+							} else {
+								tmp = rand() % v.size();
+								while(t) {
+									if(v[tmp].getKor() == v[n].getKor()) {
+									tmp = rand() % v.size();
+									} else {
+										t = false;
+									}
+								}
+								cout << v[tmp].getKor();
+							}
+						} else if (answer == 2){
+							if(i == 1) {
+								cout << v[n].getKor();
+							} else {
+								tmp = rand() % v.size();
+								while(t) {
+									if(v[tmp].getKor() == v[n].getKor()) {
+									tmp = rand() % v.size();
+									} else {
+										t = false;
+									}
+								}
+								cout << v[tmp].getKor();
+							}
+						} else if (answer == 3) {
+							if (i == 2) {
+								cout << v[n].getKor();
+							} else {
+								tmp = rand() % v.size();
+								while(t) {
+									if(v[tmp].getKor() == v[n].getKor()) {
+									tmp = rand() % v.size();
+									} else {
+										t = false;
+									}
+								}
+								cout << v[tmp].getKor();
+							}
+						} else if (answer == 4) {
+							if (i == 3) {
+								cout << v[n].getKor();
+							} else {
+								tmp = rand() % v.size();
+								while(t) {
+									if(v[tmp].getKor() == v[n].getKor()) {
+										tmp = rand() % v.size();
+									} else {
+										t = false;
+									}
+								}
+								cout << v[tmp].getKor();
+							}
+						}
+					}
+					cin >> num;
+					if(num > 0 && num < 5) {
+						if (num == answer){
+						cout << "Excellent !!" << endl;
+						} else if (num != answer) {
+							cout << "No !!" << endl;
+						}
+					} else {
 						break;
 					}
 				}
-			}
 			break;
 		}
 		if(but != 1 && but != 2) {
