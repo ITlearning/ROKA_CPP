@@ -2,3 +2,9 @@
 // 사용을 했을 경우 위와 같은 상태를 유지해 주시기 바랍니다.
 
 // IT_learning
+#include <iostream>
+using namespace std;
+
+int main(){
+	cout << hex << 30 << endl;
+}
