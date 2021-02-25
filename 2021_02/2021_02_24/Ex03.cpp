@@ -1,18 +1,19 @@
 #include <iostream>
 using namespace std;
-
+    
 int main() {
-	char a;
-	int cnt = 0;
-	while(true) {
-		cin.get(a);
-		cnt++;
-		if(cin.eof()) break;
-		if(a == ';')
-			cin.ignore(cnt);
+    int a;
+    cin.ignore(100,';');
+	while((a = cin.get()) != EOF)  {
 		cout.put(a);
-		if(a == '\n')
-			break;
+		if(a == '\n') {
+			cin.ignore(100,';');
+		}
+			
 	}
-	
 }
+
+
+/*
+
+*/
