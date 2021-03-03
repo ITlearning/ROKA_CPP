@@ -28,7 +28,7 @@ void start() {
 
 int printWord(vector<string> &w, string &m) {
 	srand((unsigned)time(0));
-		int n = rand() % 1;
+		int n = rand() % 30;
 		string Pword = w[n];
 		
 		while(true) {
@@ -49,30 +49,38 @@ int printWord(vector<string> &w, string &m) {
 bool game(vector<string> &v, int len, string z) {
 	string Nword = v[len];
 	string Pword = z;
-	while(true) {
-		int cnt = 5;
+	int cnt = 5;
+	bool t = true;
+	while(t) {
 		cout << Pword << endl;
 		cout << ">> ";
 		string answer;
 		cin >> answer;
-		if(int a = Nword.find(answer) != string::npos) {
-			if(cnt < 0) {
-				cout << "5번 실패하셨습니다." << endl;
+		cnt--;
+		if(cnt < 0) {
+				string b;
+				cout << "5번 실패하였습니다." << endl;
 				cout << Nword << endl;
-				cout << "Next(y/n) > ";
-				string yorn;
-				cin >> yorn;
-					
-				if(yorn == "n") {
+				cout << "Next(y/n)? ";
+				cin >> b;
+				if(b == "n") {
 					return false;
-					break;
-				} else {
+				}else {
 					break;
 				}
 			}
-				Pword.replace(Nword.find(answer),1,answer);
-				cnt--;
+		if(Nword.find(answer) != string::npos) {
+				for(int i = 0; i < Nword.length(); i++) {
+					if(Nword.compare(i,1,answer) == 0) {
+						if(Pword.compare(i,1,"-") == 0) {
+							Pword.replace(i,1,answer);
+						} else {
+							cout << "이미 존재하는 알파벳입니다." << endl;
+						}
+					}
+				}
 				cout << Pword << endl;
+				
 				if(Nword == Pword) {
 					cout << "Next(y/n) > ";
 					string yorn;
@@ -80,7 +88,6 @@ bool game(vector<string> &v, int len, string z) {
 					
 					if(yorn == "n") {
 						return false;
-						break;
 					} else {
 						break;
 					}
@@ -95,7 +102,7 @@ int main() {
 	vector<string> Word;
 	string name;
 	bool t = true;
-	ifstream fin("/workspace/ROKA_CPP/2021_03/2021_03_01/word.txt");
+	ifstream fin("/workspace/ROKA_CPP/2021_03/2021_03_01/words.txt");
 	if(!fin) {
 		cout << "words.txt 파일을 열 수 없습니다." << endl;
 		return 0;
