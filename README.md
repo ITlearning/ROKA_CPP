@@ -14,7 +14,6 @@
  - PPT는 아쉽게도 사용이 불가능했습니다.
  - 따라서 '명품 C++ Programming'으로 공부를 대신합니다.
  - 5월까지 책을 마무리 하겠습니다.
- 
  * * * 
  ## 사용하는 책
  <p align="center"><img width="50%" src="https://user-images.githubusercontent.com/11778058/107959610-fba52f00-6fe6-11eb-965f-0e926cd2be1e.jpg" /></p>
@@ -23,6 +22,16 @@
  명품 C++ Programming - 황기태
 </p>
  
+ 
+* * *
+### Other Project
+지금껏 배워온 C++을 이용하여 다른 프로젝트를 진행하는 부스
+
+블록체인 프로젝트 진행중 . . .
+
+Deep Learning 프로젝트 진행중 . . 
+
+##### 추후에 프로젝트의 규모가 커지거나 책이 도착했을경우, 새로운 레포지토리를 생성할 예정
  
  * * *
  ## 여러 사이트
