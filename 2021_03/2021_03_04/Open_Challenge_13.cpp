@@ -1,3 +1,5 @@
+// 보류. 진행중.
+
 #include <iostream>
 #include <string>
 using namespace std;
@@ -24,6 +26,16 @@ public:
 	}
 };
 
+class decodeException : public HardWareException {
+public:
+	decodeException(string step = "", string msg = "") : HardWareException(step, msg) {}
+};
+
+class fetchException : public HardWareException {
+public:
+	fetchException(string step = "", string msg = "") : HardWareException(step, msg) {}
+};
+
 class CPU {
 protected:
 		
@@ -36,11 +48,19 @@ protected:
 public:
 	void run();
 	
-	static int stringToInt(string x);
+	static int stringToInt(string x) { return stoi(x); }
 };
 
 void CPU::fetch() { // 명령어를 키보드로부터 읽어온다.
-	cin >> cmd >> op1 >> op2;
+	string a,b;
+	cmd = "";
+	getline(cin, cmd, '\n');
+	if(cmd.size() == 0) {
+		return;
+	}
+	cin >> a >> b;
+	op1 = stringToInt(a);
+	op2 = stringToInt(b);
 }
 
 void CPU::decode() { //명령어 코드가 무엇인지 판별 
@@ -52,22 +72,20 @@ void CPU::decode() { //명령어 코드가 무엇인지 판별
 		instruction = cmd;
 	} else if (cmd == "DIV") {
 		instruction = cmd;
-	} else if(cmd == " "){
-		cmd = "Empty";
 	} else {
-		cmd = "NULL";
+		return;
 	}
 }
 
 void CPU::execute() { // 명령어 코드에 따라 명령 실행 
 	if(instruction == "ADD") {
-		cout << instruction << ' ' << op1 << ' ' << op2 << ": \t" << op1 + op2 << endl;
+		cout << '\t' << instruction << ' ' << op1 << ' ' << op2 << ": \t" << op1 + op2 << endl;
 	} else if (instruction == "SUB") {
-		cout << instruction << ' ' << op1 << ' ' << op2 << ": \t" << op1 - op2 << endl;
+		cout << '\t' << instruction << ' ' << op1 << ' ' << op2 << ": \t" << op1 - op2 << endl;
 	} else if (instruction == "MUL") {
-		cout << instruction << ' ' << op1 << ' ' << op2 << ": \t" << op1 * op2 << endl;
+		cout << '\t' << instruction << ' ' << op1 << ' ' << op2 << ": \t" << op1 * op2 << endl;
 	} else if (instruction == "DIV") {
-		cout << instruction << ' ' << op1 << ' ' << op2 << ": \t" << op1 / op2 << endl;
+		cout << '\t' << instruction << ' ' << op1 << ' ' << op2 << ": \t" << op1 / op2 << endl;
 	}
 }
 
@@ -76,19 +94,24 @@ void CPU::run() {
 		try {
 			fetch();
 			decode();
-			if(cmd != "ADD" && cmd != "SUB" && cmd != "MUL" && cmd != "DIV") {
-				if(cmd == "NULL") {
-					throw HardWareException("decode", "invalid 명령어 예외");
-				} else if (cmd == "Empty") {
-					throw HardWareException("fetch", "명령 라인 없음");
-				}	
+				if(cmd != "ADD" && cmd != "SUB" && cmd != "MUL" && cmd != "DIV") {
+					if(cmd.size() != 3) {
+						if (cmd.size() == 0) {
+						throw fetchException("fetch", "명령 라인 없음");
+					}	
+						throw decodeException("decode", "invalid 명령어 예외");
+				} 
 			}
 			execute();
-			if(op2 == 0) {
-				throw HardWareException("decode", "0으로 나누는 예외");
-			} else if (op2 <= 0) {
-				
-			} 
+		}
+		catch(HardWareException &d) {
+			d.what();
 		}
 	}
+}
+
+
+int main() {
+	CPU cpu;
+	cpu.run();
 }
